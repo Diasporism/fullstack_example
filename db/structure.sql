@@ -26,6 +26,20 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: books; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.books (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    title text NOT NULL,
+    description text,
+    auther text NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -43,11 +57,33 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
+-- Name: books books_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.books
+    ADD CONSTRAINT books_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: index_books_on_auther; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_books_on_auther ON public.books USING btree (auther);
+
+
+--
+-- Name: index_books_on_title; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_books_on_title ON public.books USING btree (title);
 
 
 --
@@ -57,6 +93,7 @@ ALTER TABLE ONLY public.schema_migrations
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('0');
+('0'),
+('20221218222540');
 
 

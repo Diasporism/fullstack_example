@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root "books#index"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :books, only: [:index, :show, :edit], defaults: { format: :html }
+
+  scope module: 'api/v1', path: 'api/v1', as: 'api_v1', except: [:new, :edit], defaults: { format: :json } do
+    resources :books
+  end
 end
