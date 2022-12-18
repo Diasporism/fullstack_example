@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:14.6-alpine3.16
+    volumes:
+    - postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: password
+  fullstack_example:
+    platform: linux/x86_64
+    build: .
+    tty: true
+    ports:
+    - 3000:3000
+    depends_on:
+    - postgres
+    volumes:
+    - ./app:/fullstack_example/app
+    environment:
+      PIDFILE: /tmp/pids/server.pid
+      DATABASE_HOST: postgres
+    tmpfs:
+    - /tmp/pids/
+volumes:
+  postgres:

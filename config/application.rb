@@ -33,5 +33,9 @@ module FullstackExample
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.active_record.schema_format = :sql
+
+    config.active_record.partial_inserts = true
   end
 end
