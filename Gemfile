@@ -4,15 +4,15 @@ git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 ruby '3.1.2'
 gem 'rails', '~> 7.0.4'
 
-gem 'bcrypt',            '~> 3.1.7' # Used for password encryption
-gem 'cssbundling-rails', '~> 1.1.1' # Used for bunding css files
-gem 'jsbundling-rails',  '~> 1.0.3' # Used for bunding javascript files
-gem 'jwt',               '~> 2.3.0' # Used to sign/encrypt JSON Web Tokens
-gem 'pg',                '~> 1.2.3' # Used for Postgres
-gem 'puma',              '~> 5.0'   # Used as the multi-threaded webserver
-gem 'sassc-rails',       '~> 2.1'   # Used to compile Sass into CSS
-gem 'stimulus-rails',    '~> 1.0.2' # Used for frontendy Javascript stuff
-gem 'turbo-rails',       '~> 1.0.0' # Used for frontendy Javascript stuff
+gem 'bcrypt',             '~> 3.1.7' # Used for password encryption
+gem 'cssbundling-rails',  '~> 1.1.1' # Used for bunding css files
+gem 'jsbundling-rails',   '~> 1.0.3' # Used for bunding javascript files
+gem 'jsonapi-serializer', '~> 2.2.0' # Used to generate JSON API responses
+gem 'pg',                 '~> 1.2.3' # Used for Postgres
+gem 'puma',               '~> 5.0'   # Used as the multi-threaded webserver
+gem 'sassc-rails',        '~> 2.1'   # Used to compile Sass into CSS
+gem 'stimulus-rails',     '~> 1.0.2' # Used for frontendy Javascript stuff
+gem 'turbo-rails',        '~> 1.0.0' # Used for frontendy Javascript stuff
 
 group :development, :test do
   gem 'rspec-rails',       '~> 5.1.2'  # Used for running specs
