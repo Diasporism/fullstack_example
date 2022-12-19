@@ -2,12 +2,13 @@ import { Controller } from '@hotwired/stimulus'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import IndexComponent from '../components/books/index_component.jsx'
-import ShowComponent from '../components/books/show_component.jsx'
 import EditComponent from '../components/books/edit_component.jsx'
 
 class BooksController extends Controller {
   static values = {
-    action: String
+    action: String,
+    books: Array,
+    book: Object
   }
 
   connect () {
@@ -15,16 +16,10 @@ class BooksController extends Controller {
 
     switch (this.actionValue) {
       case 'index':
-        root.render(<IndexComponent />)
-        return
-      case 'show':
-        root.render(<ShowComponent />)
-        return
+        return root.render(<IndexComponent books={ this.booksValue } />)
       case 'edit':
-        root.render(<EditComponent />)
-        return
+        return root.render(<EditComponent book={ this.bookValue } />)
       default:
-        return
     }
   }
 }

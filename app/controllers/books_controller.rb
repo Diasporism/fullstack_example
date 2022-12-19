@@ -1,10 +1,9 @@
 class BooksController < ApplicationController
   def index
-  end
-
-  def show
+    @books = Book.all.order(author: :asc)
   end
 
   def edit
+    @book = Book.find(params[:id])
   end
 end

@@ -32,8 +32,8 @@ CREATE TABLE public.ar_internal_metadata (
 CREATE TABLE public.books (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     title text NOT NULL,
-    description text,
-    auther text NOT NULL,
+    genre text,
+    author text NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -73,10 +73,10 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
--- Name: index_books_on_auther; Type: INDEX; Schema: public; Owner: -
+-- Name: index_books_on_author; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_books_on_auther ON public.books USING btree (auther);
+CREATE INDEX index_books_on_author ON public.books USING btree (author);
 
 
 --

@@ -1,1 +1,5 @@
-<%= content_tag(:div, '', id: 'books', data: { controller: 'books', 'books-action-value': 'index' })%>
+<%= content_tag(:div, '', id: 'books', data: {
+  controller: 'books',
+  'books-action-value': 'index',
+  'books-books-value': @books
+})%>
